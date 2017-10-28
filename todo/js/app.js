@@ -49,6 +49,7 @@ function fetchQuery(
       variables,
     }),
   }).then(response => {
+    console.log('Fetch successful.');
     return response.json();
   });
 }
@@ -61,6 +62,7 @@ const modernEnvironment = new Environment({
 ReactDOM.render(
   <QueryRenderer
     environment={modernEnvironment}
+    cacheConfig={{poll: 1000}}
     query={graphql`
       query appQuery {
         viewer {
